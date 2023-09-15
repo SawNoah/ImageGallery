@@ -2,17 +2,30 @@
 Web Development Final Porject
 # Creating database tables
 
-#Users
-CREATE TABLE `Users`(
-    `user_id` INT AUTO_INCREMENT,
-    `username` VARCHAR(50),
-    `contact` INT,
-    `address` VARCHAR(50),
-    `email` VARCHAR(50),
-    `join_date` DATE,
-    `role` VARCHAR(50),
-    `password` VARCHAR(50),
-    PRIMARY KEY(`user_id`,`username`,`role`)
+#Admin
+CREATE TABLE Admin(
+    admin_id INT AUTO_INCREMENT,
+    admin_name VARCHAR(50),
+    contact INT,
+    address VARCHAR(50),
+    email VARCHAR(50),
+    join_date DATE,
+    role VARCHAR(50),
+    PASSWORD VARCHAR(50),
+    PRIMARY KEY(admin_id)
+);
+
+#Customer
+CREATE TABLE Customer(
+    customer_id INT AUTO_INCREMENT,
+    customer_name VARCHAR(50),
+    contact INT,
+    address VARCHAR(50),
+    email VARCHAR(50),
+    join_date DATE,
+    role VARCHAR(50),
+    PASSWORD VARCHAR(50),
+    PRIMARY KEY(customer_id)
 );
 
 #Image_Gallery
@@ -24,26 +37,6 @@ CREATE TABLE Image_Gallery(
     `price` INT, 
     `category` VARCHAR(50), 
     PRIMARY KEY(`image_id`) 
-);
-
-#Admin
-CREATE TABLE `Admin`( 
-    `admin_id` INT AUTO_INCREMENT, 
-    `user_id` INT, 
-    `username` VARCHAR(50), 
-    `role` VARCHAR(50), 
-    PRIMARY KEY(`admin_id`), 
-    FOREIGN KEY(`user_id`, `username`, `role`) REFERENCES `users`(`user_id`,`username`,`role`) 
-);
-
-#Customer
-CREATE TABLE `Customer`(
-    `customer_id` INT AUTO_INCREMENT,
-    `user_id` INT,
-    `username` VARCHAR(50),
-    `role` VARCHAR(50),
-    PRIMARY KEY(`customer_id`),
-    FOREIGN KEY(`user_id`, `username`, `role`) REFERENCES `users`(`user_id`, `username`, `role`)
 );
 
 #Orders
