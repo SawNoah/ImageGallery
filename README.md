@@ -6,7 +6,7 @@ Web Development Final Porject
 CREATE TABLE Admin(
     admin_id INT AUTO_INCREMENT,
     username VARCHAR(50),
-    contact INT,
+    contact VARCHAR(50),
     address VARCHAR(50),
     email VARCHAR(50),
     join_date DATE,
@@ -19,7 +19,7 @@ CREATE TABLE Admin(
 CREATE TABLE Customer(
     customer_id INT AUTO_INCREMENT,
     username VARCHAR(50),
-    contact INT,
+    contact VARCHAR(50),
     address VARCHAR(50),
     email VARCHAR(50),
     join_date DATE,
