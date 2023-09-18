@@ -5,7 +5,7 @@ Web Development Final Porject
 #Admin
 CREATE TABLE Admin(
     admin_id INT AUTO_INCREMENT,
-    admin_name VARCHAR(50),
+    username VARCHAR(50),
     contact INT,
     address VARCHAR(50),
     email VARCHAR(50),
@@ -18,7 +18,7 @@ CREATE TABLE Admin(
 #Customer
 CREATE TABLE Customer(
     customer_id INT AUTO_INCREMENT,
-    customer_name VARCHAR(50),
+    username VARCHAR(50),
     contact INT,
     address VARCHAR(50),
     email VARCHAR(50),
