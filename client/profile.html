@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>Profile Page</title>
+    <script src="https://kit.fontawesome.com/0d592f66fa.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="profile.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="">
+    <div class="container-fluid mt-5">
+        <nav class="navbar navbar-dark bg-purple fixed-top">
+            <div class="container-fluid row">
+                <div>
+                    <a class="navbar-brand" href="javascript:history.back()"><i class="fa-regular fa-image"> The Xhibit</i></a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mt-5">
+                    <div class="card-body text-center">
+                        <img class="rounded" src="images/proflie.jpg" alt="Profile Picture" style="width:100%">
+                        <h1 id="username">Username</h1>
+                        <span>Email: <p class="title" id="email">Email Address</p></span>
+                        <!-- Add other profile information here as needed -->
+                        <span>Contact: <p class="title" id="contact">Contact no.</p></span>
+                        <span>Address: <p class="title" id="address">Address/example</p></span>
+                        <!-- Sign Out button -->
+                        <button class="btn btn-danger bg-purple mt-3 mb-3" id="signOutButton">Sign Out</button>
+                        <a href="javascript:history.back()"><i class="fa-solid fa-left-long" style="color: #6838e1;"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        // Add an event listener to the "Sign Out" button
+        document.getElementById('signOutButton').addEventListener('click', signOut);
+
+        // Function to handle sign out
+        function signOut() {
+            // Remove user data from localStorage
+            localStorage.removeItem('userProfileData');
+            // Redirect the user to the login page
+            window.location.href = 'signin.html';
+        }
+
+        // Retrieve user profile data from localStorage
+        var userProfileData = JSON.parse(localStorage.getItem('userProfileData'));
+
+        if (userProfileData) {
+            // Update the profile card with user data
+            document.getElementById('username').textContent = userProfileData.username;
+            document.getElementById('email').textContent = userProfileData.email;
+            document.getElementById('contact').textContent = userProfileData.contact;
+            document.getElementById('address').textContent = userProfileData.address;
+            // Populate other elements with user data as needed
+        }
+    </script>
+</body>
+</html>

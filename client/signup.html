@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+        <title>Sign up Page</title>
+        <script src="https://kit.fontawesome.com/0d592f66fa.js" crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+        <style>
+            .bg-purple{
+             background-color: rgb(104, 56, 225);
+            }     
+            .form{
+            margin-top: 60px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            }  
+        </style>
+        <script>
+            $(document).ready(function() {
+                // Base URL for API requests
+                const apiUrl = 'http://localhost/PhpCodes/finalproject/server/signup.php';
+    
+                // Handle the form submission for creating a new user
+                $('#registration').submit(function(event) {
+                    event.preventDefault();
+                    var formData = $(this).serialize(); // Serialize form data
+    
+                    $.ajax({
+                        url: apiUrl,
+                        type: 'POST',
+                        data: formData,
+                        success: function(response) {
+                            alert('User created successfully');
+                            $('#registration')[0].reset(); // Reset the form
+                        },
+                        error: function() {
+                            alert('Error creating user');
+                        }
+                    });
+                });
+
+            });
+        </script>
+    </head>
+    <body class="">
+        <div class="container-fluid form">
+            <nav class="navbar navbar-dark bg-purple fixed-top">
+                <div class="container-fluid row">
+                <a class="navbar-brand"><i class="fa-regular fa-image"> THE XHIBIT</i></a>
+                </div>
+            </nav>    
+        </div>
+        <div class="container mt-100">
+            <h2 class="">Sign up For Free.</h2>
+            <a href="signin.html">Already have account?</a>
+            <form id="registration" action="signin.html">
+                <div class="form-floating mb-3 mt-3">
+                    <input type="text" name="username" class="form-control" id="username" required>
+                    <label for="username">Enter username</label>
+                </div>
+                <div class="form-floating mb-3 mt-3">
+                    <input type="tel" name="contact" class="form-control" id="contact" required>
+                    <label for="contact">Enter contact no.</label>
+                </div>
+                <div class="form-floating mb-3 mt-3">
+                    <input type="text" name="address" class="form-control" id="address" required>
+                    <label for="address">Enter address</label>
+                </div>
+                <div class="form-floating mb-3 mt-3">
+                    <input type="email" name="email" class="form-control" id="email" required>
+                    <label for="email">Enter email</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" name="password" class="form-control" id="password" required>
+                    <label for="password">Enter password</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="date" name="join_date" class="form-control" id="join_date" required>
+                    <label for="join_date">Enter join date</label>
+                </div>
+                <div class="form-group">
+                    <div class="form-group mb-3">
+                        <label>User Role:</label>
+                        <input type="radio" id="adminRole" name="role" value="admin">
+                        <label for="adminRole">Admin</label>
+                        <input type="radio" id="customerRole" name="role" value="customer" checked>
+                        <label for="customerRole">Customer</label>                          
+                    </div>                           
+                </div>
+                <button type="submit" class="btn btn-dark bg-purple col-md-4">Sign up</button>
+            </form>
+        </div>
+        
+    </body>
+</html>

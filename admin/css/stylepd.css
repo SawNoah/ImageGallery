@@ -1,0 +1,45 @@
+.title {
+    margin-top: 120px;
+    margin-bottom: -57px;
+    margin-left: 550px;
+    padding-left: 300px;
+    text-align: center;
+    width: 1000px;
+}
+
+.table-dark {
+    text-align: center;
+
+}
+
+.data {
+    text-align: center;
+    line-height: 120px;
+}
+
+.btn {
+    margin-top: 1px;
+    margin-left: 118px;
+    margin-bottom: -30px;
+    border-radius: 10px;
+}
+
+.btn1 {
+    margin-left: -1px;
+    height: 35px;
+    width: 70px;
+    line-height: 10px;
+    border-radius: 10px;
+    background-color: rgb(25, 92, 238);
+    font-weight: bold;
+}
+
+.btn2 {
+    margin-left: 1px;
+    height: 35px;
+    width: 70px;
+    line-height: 10px;
+    border-radius: 10px;
+    background-color: rgb(245, 21, 21);
+    font-weight: bold;
+}

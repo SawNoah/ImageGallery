@@ -1,0 +1,56 @@
+.form {
+    background-color: rgb(181, 184, 184);
+    width: 450px;
+    margin-left: 330px;
+}
+
+.title {
+    margin-top: 20px;
+    width: 150px;
+    margin-left: 140px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.f1 {
+    width: 400px;
+    margin-left: 27px;
+    padding-top: 20px;
+}
+
+.f2 {
+    width: 400px;
+    margin-left: 27px;
+    padding-top: 8px;
+}
+
+.f3 {
+    width: 400px;
+    margin-left: 27px;
+    padding-top: 8px;
+}
+
+.f4 {
+    width: 400px;
+    margin-left: 27px;
+    padding-top: 8px;
+}
+
+.f5 {
+    width: 400px;
+    margin-left: 27px;
+    padding-top: 8px;
+}
+
+.f6 {
+    width: 400px;
+    margin-left: 27px;
+    padding-top: 8px;
+}
+
+.f7 {
+    width: 400px;
+    margin-left: 140px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
