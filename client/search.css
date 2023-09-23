@@ -1,0 +1,20 @@
+.result-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+
+}
+.result-image {
+    width: 30%;
+    height: 30%;
+    margin-bottom: 10px;
+}
+.result-details {
+    flex-grow: 1;
+    text-align: center;
+}

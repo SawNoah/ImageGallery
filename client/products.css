@@ -1,0 +1,70 @@
+/* Custom CSS for product cards */
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-card .card-body {
+    padding: 15px;
+}
+
+.product-card .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.product-card .card-text {
+    font-size: 1rem;
+    color: #777;
+}
+
+.product-card .btn {
+    margin-top: 10px;
+}
+
+/* Custom CSS for the new product card structure */
+.product-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-card-new {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product-card-new .row {
+    padding: 15px;
+}
+
+.product-card-new .product-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-card-new .ratings {
+    margin-right: 10px;
+}
+
+.product-card-new .strike-text {
+    text-decoration: line-through;
+    color: #777;
+}
+
+.product-card-new .text-success {
+    color: green;
+}
+
+.product-card-new .btn {
+    margin-top: 10px;
+}

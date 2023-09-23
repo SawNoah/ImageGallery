@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+        <title>Search Page</title>
+        <script src="https://kit.fontawesome.com/0d592f66fa.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="search.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-dark bg-purple fixed-top">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="home.html"><i class="fa-regular fa-image"> The Xhibit</i></a>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                    <div class="offcanvas-header bg-purple text-white" data-bs-theme="dark">
+                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"><a class="ms-2 link-light link-offset-2 link-underline link-underline-opacity-0" href="profile.html"><i class="fa-solid fa-user"></i><span class="tabs" id="username"></span>
+                        </a></h5>
+                        <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-start flex-grow-1 pe-3 nav-links">
+                            <li class="nav-item"><a class="" href="home.html"><i class="fa-solid fa-house-chimney"></i><span class="tabs">Home</span>
+                            </a></li>
+                            <li class="nav-item"><a class="" href="products.html"><i class="fa-brands fa-product-hunt"></i><span class="tabs">Products</span>
+                            </a></li>
+                            <li class="nav-item"><a class="" href="search.html"><i class="fa-solid fa-magnifying-glass"></i><span class="tabs">Search</span>
+                            </a></li>
+                            <li class="nav-item"><a class="" href="profile.html"><i class="fa-solid fa-user"></i><span class="tabs">Profile</span>
+                            </a></li>
+                            <li class="nav-item"><a class="" href="about.html"><i class="fa-solid fa-circle-info"></i><span class="tabs">About</span>
+                            </a></li>
+                            <li class="nav-item"><a class="" href="signin.html"><i class="fa-solid fa-right-from-bracket"></i><span class="tabs">Log out</span>
+                            </a></li>
+                            <div class="active"></div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <script>
+            // Retrieve user profile data from localStorage
+            var userProfileData = JSON.parse(localStorage.getItem('userProfileData'));
+        
+            if (userProfileData) {
+                // Update the profile card with user data
+                document.getElementById('username').textContent = userProfileData.username;
+                // Populate other elements with user data as needed
+            }
+        </script>
+        <div class="justify-content-center text-center mt-5">
+            <h2 class="mb-4" style="margin-top: 70px;">Search Images</h2>
+        <!-- SEARCH FORM -->
+            <form id="mySearch" method="POST" class="col-sm-4 mx-5">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-sm mx-3" name="search" required placeholder="Enter Image Description to Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                        <a href="javascript:history.back()" class="btn btn-secondary bg-purple">Back</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+
+        <!-- SEARCH RESULTS -->
+        <div id="results"></div>
+
+        <script>
+            // Base URL for API requests
+            const apiUrl = 'http://localhost/PhpCodes/finalproject/server/search.php';
+
+            $(document).ready(function () {
+                $('#mySearch').on('submit', function (e) {
+                    e.preventDefault();
+                    var searchTerm = $('input[name="search"]').val();
+
+                    $.ajax({
+                        type: 'POST',
+                        url: apiUrl,
+                        data: { search: searchTerm },
+                        dataType: 'json',
+                        success: function (data) {
+                            displayResults(data);
+                        },
+                        error: function () {
+                            alert('Error searching for images.');
+                        }
+                    });
+                });
+
+                function displayResults(results) {
+                var resultsDiv = $('#results');
+                resultsDiv.empty();
+
+                if (results.length > 0) {
+                    results.forEach(function (result) {
+                        var resultCard = $('<div class="result-card align-self-center">');
+                        var resultImage = $('<img class="result-image" src="../admin/controller/images/' + result.image_name + '" alt="Image">');
+                        var resultDetails = $('<div class="result-details">');
+                        
+                        resultDetails.append('<p>Image Description: ' + result.description + '</p>');
+                        resultDetails.append('<p>Image File name: ' + result.image_name + '</p>');
+                        resultDetails.append('<p>Category: ' + result.category + '</p>');
+                        resultDetails.append('<p>Price: $' + result.price + '</p>');
+
+                        resultCard.append(resultImage);
+                        resultCard.append(resultDetails);
+
+                        resultsDiv.append(resultCard);
+                    });
+                } else {
+                    resultsDiv.html('<h3 class="mx-5">No results found.</h3>');
+                }
+            }
+            });
+        </script>
+    </body>
+        <!-- Footer -->
+        <footer class="text-center text-white bg-purple" >
+            <div class="container">
+                <section class="mt-5">
+                <div class="row text-center d-flex justify-content-center pt-5">
+                    <div class="col-md-2">
+                        <h6 class="text-uppercase font-weight-bold"><a href="products.html" class="text-white">Products</a></h6>
+                    </div>
+        
+                    <div class="col-md-2">
+                         <h6 class="text-uppercase font-weight-bold"><a href="search.html" class="text-white">Search</a></h6>
+                    </div>
+    
+                    <div class="col-md-2">
+                        <h6 class="text-uppercase font-weight-bold"><a href="profile.html" class="text-white">Profile</a></h6>
+                    </div>
+    
+                    <div class="col-md-2">
+                        <h6 class="text-uppercase font-weight-bold"><a href="about.html" class="text-white">About</a></h6>
+                    </div>
+    
+                    <div class="col-md-2">
+                        <h6 class="text-uppercase font-weight-bold"><a href="signin.html" class="text-white">Log out</a></h6>
+                    </div> 
+                </div>
+                </section>
+          
+            <hr class="my-5" />
+    
+                <section class="mb-5">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-lg-8">
+                            <p>
+                              Thank you for visiting our Website.
+                              You can visit our Website Anytime Anywhere.
+                            </p>
+                            <p>Buy our Products and have a Great Time.
+                        </div>
+                    </div>
+                </section>
+          
+            <!-- Section: Social -->
+                <section class="text-center mb-5">
+                    <a href="#" class="text-white me-4"><i class="fab fa-facebook-f"></i></a>
+    
+                    <a href="#" class="text-white me-4"><i class="fab fa-twitter"></i></a>
+    
+                    <a href="#" class="text-white me-4"><i class="fab fa-google"></i></a>
+    
+                    <a href="#" class="text-white me-4"><i class="fab fa-instagram"></i></a>
+    
+                    <a href="#" class="text-white me-4"><i class="fab fa-linkedin"></i></a>
+    
+                    <a href="#" class="text-white me-4"><i class="fab fa-github"></i></a>
+                </section>
+            <!-- Section: Social -->
+            </div>
+    
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)"> © 2023 Copyright:
+                <a class="text-white" href="#">THE XHIBIT</a>
+            </div>
+        </footer>
+</html>
